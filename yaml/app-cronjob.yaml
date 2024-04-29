@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cronjob
+  namespace: demo
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: my-cronjob-container
+            image: us-west1-docker.pkg.dev/devops-419716/kbot/demo:v1.0.0
+            command: ["echo",  "Hello world"]
+          restartPolicy: OnFailure

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-multicontainer
+  namespace: demo
+  labels: 
+    app: demo
+    run: demo
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+    - name: db-container
+      image: mysql:latest
+      ports:
+        - containerPort: 3306
